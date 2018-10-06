@@ -7,7 +7,8 @@ import {route} from "./routes";
 import { configureStore, initStore } from "./store/configStore";
 
 const store = configureStore();
-store.dispatch<any>(initStore());
+const action = initStore();
+store.dispatch(action);
 
 class App extends React.Component<{}, {}> {
     public render(): JSX.Element {

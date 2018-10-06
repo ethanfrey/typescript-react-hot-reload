@@ -33,7 +33,7 @@ class TodoPageComponent extends React.Component<ITodoProps, ITodoState> {
         return (
             <div>
                 <Card bordered title="Todo List" style={{ margin: "16px 16px"}}>
-                    <Button type="primary" icon="plus"
+                    <Button type="primary" icon="plus" htmlType="button"
                         onClick={() => {this.setState({modalVisible: true}); }}>New Task</Button>
                     <Table dataSource={this.props.todoItems}>
                         <Column title="Id" dataIndex="id" key="id"></Column>
@@ -43,7 +43,7 @@ class TodoPageComponent extends React.Component<ITodoProps, ITodoState> {
                                 return <span>{record.isCompleted ? "Completed" : "Pending"}</span>;
                             }}></Column>
                         <Column title="Action" key="action" render={(text: any, record: TodoItem, index: number) => (
-                            <Button type="primary" disabled={record.isCompleted}
+                            <Button type="primary" disabled={record.isCompleted} htmlType="button"
                                 onClick={() => {
                                     record.isCompleted = true;
                                     this.props.actions.completeTodoAction(record);
@@ -52,6 +52,7 @@ class TodoPageComponent extends React.Component<ITodoProps, ITodoState> {
                     </Table>
                 </Card>
                 <Modal title="New Task" visible={this.state.modalVisible}
+                    align="center"
                     onOk={() => this.handleOk()}
                     onCancel={() => this.handleCancel()}>
                     <Input.TextArea placeholder="Input the name of the task" rows={4}
